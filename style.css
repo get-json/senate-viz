@@ -1,0 +1,525 @@
+@charset "UTF-8";
+
+/* CSS Document */
+
+@font-face {
+    font-family: Georgia;
+    src: url(fonts/Georgia.ttf);
+}
+
+#title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 3em;
+    text-align: center;
+    width: 100%;
+}
+
+
+.viz_container {
+    width: 800;
+    height: 550px;
+}
+
+div.tooltip {
+    position: absolute;
+    /*text-align: center;*/
+    width: 30em;
+    height: 20em;
+    padding: 1em 1em 1em 1em;
+    font: 12px sans-serif;
+    background: #CDCDCD;
+    border: 0px;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+#senator_info {
+    /*width: inherit;
+    height: 15em;*/
+    /* position: absolute; */
+    /*left: 5%;
+    top: 20%;*/
+    /*background: whitesmoke;*/
+    /*box-shadow: inset 1px 1px 0 white;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1em 1em;*/
+}
+
+#senator_info p {
+    font-size: 20px;
+}
+
+#org_info {
+    position: relative;
+    border: 1px solid black;
+    height: 20em;
+    padding: 1em;
+    border-radius: 1em;
+    left: 20px;
+    right: 10px;
+    top: 40px;
+    visibility: collapse;
+}
+
+#senator_info img {
+    margin: 1em 0 0 2em;
+    padding: auto;
+    opacity: 1;
+    float: left;
+}
+
+#senator_info .icon.state img {
+    margin: 1em 0 0 2em;
+    padding: 0;
+    float: left;
+    height: 2em;
+}
+
+#senator_info .icon.party img {
+    margin: 1em 0 0 2em;
+    padding: 0;
+    float: left;
+    height: 2em;
+}
+
+.donation_details {
+    float: left;
+    position: relative;
+    background-color: yellow;
+}
+
+
+/*div .Senator_Name {
+    left: 5em;
+    position: absolute;
+	font-size:2em;
+    display: inline;
+    margin-left: .5em;
+}
+
+div .Senator_State_Party {
+    position: absolute;
+    left: 7em;
+    top: 2em;
+	font-size:1.5em;
+}
+
+div .total_contribution_amount{
+	position: absolute;
+    left: 7em;
+    top: 3em;
+	font-size:1.5em;
+	}*/
+
+#senator_info h2,
+#senator_info h3,
+#senator_info h4 {
+    float: left;
+    font-weight: 800;
+    padding-left: 0.5em;
+    display: inline-block;
+    font-family: Georgia, Helvetica, Arial, sans-serif;
+}
+
+#senator_info span p {
+    float: left;
+    font-family: Georgia, Helvetica, Arial, sans-serif;
+    font-size: 1.2em;
+    margin-left: 2em;
+    line-height: 1em;
+}
+
+
+/*div span p {
+    float: left;
+    display: inline-block;
+    font-size: 1.5em;
+    position: relative;
+    float: left;
+    left: 1em;
+    line-height: 1em;
+    width: inherit;
+    margin-left: 6em;
+}*/
+
+text-indent: 2px;
+.d3-tip {
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+	border:2px solid black;
+}
+
+/*.seating-chart {
+    position: absolute;
+    width: 70em;
+    left: 20px;
+    top: 27em;
+    z-index: 20;
+    height: auto;
+}*/
+
+.seating-chart-duplicate {
+    position: absolute;
+    width: 70em;
+    left: 20px;
+    top: 27em;
+    z-index: 99;
+    height: auto;
+    pointer-events: none;
+}
+
+.seating-chart-duplicate rect {
+    opacity: 0;
+    fill: #CCCCCC;
+}
+
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+
+/*.placeholder {
+    border: 3px solid grey;
+    background-color: #D2D0D0;
+    display: block;
+    text-align: center;
+}*/
+
+.placeholder h4 {
+    margin: 0 auto;
+    line-height: 200px;
+}
+
+.heatmap {
+    height: 32em;
+}
+
+.democrat-rect {
+    width: 25px;
+    height: 40px;
+    margin: .12em .12em;
+    border: 2px solid black;
+    background-color: #3045C4;
+    float: left;
+    position: relative;
+}
+
+.democrat-rect-group {
+    float: none;
+    pading: 0 auto;
+    margin: 0 auto;
+}
+
+.republican-rect {
+    width: 25px;
+    height: 40px;
+    margin: .12em .12em;
+    border: 2px solid black;
+    background-color: #D80206;
+    float: left;
+    position: relative;
+}
+
+.republican-rect-group {
+    float: none;
+    pading: 0 auto;
+    margin: 0 auto;
+}
+
+.extra_block {
+    width: 2em;
+    height: 2em;
+    border: 1px solid black;
+    background-color: #9C9B9B;
+    float: left;
+    position: relative;
+}
+
+.seating-chart rect:hover {
+    opacity: .6;
+    border: 10px solid #A19C9C;
+}
+
+.independent {
+    fill: #AAAAAA;
+}
+
+.treemap {
+    /*font-family: Georgia, Helvetica, Arial, sans-serif;
+    height: 60em;
+    margin: auto;
+    width: inherit;*/
+    /*border-style: solid;*/
+    position: relative;
+    /*left:75%;
+	top:40%;*/
+    /*position: absolute;
+    left: 66%;
+    top:  20%;*/
+    background: whitesmoke;
+    box-shadow: inset 1px 1px 0 white;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 1em 1em;
+}
+
+.node{
+    font-size: 20px;
+	line-height:1em;
+}
+
+.treemap h5 {
+    margin-top: 1em;
+    margin-bottom: .5em;
+    text-align: center;
+}
+
+.treemap h6 {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+#main {
+    margin-right: 360px;
+    height: 620px;
+}
+
+.node {
+    border: solid 1px white;
+    font: 10px sans-serif;
+    font-size: 1.2em;
+    line-height: 12px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: 2px;
+    line-height: 1eml;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
+    padding-bottom: 0.5em;
+    text-transform: lowercase;
+    color: #000;
+}
+
+.democrat-circle {
+    width: 10em;
+    height: 10em;
+    border-radius: 100%;
+    background-color: #2F4ED6;
+    border: 4px solid #2F4ED6;
+}
+
+.republican-circle {
+    width: 10em;
+    height: 10em;
+    border-radius: 100%;
+    background-color: #B61B1E;
+    border: 4px solid #90090C;
+}
+
+.contribution-amount p {
+    font-family: Georgia, Helvetica, Arial, sans-serif;
+    font-size: 2em;
+    line-height: 1.5em;
+    padding-left: 1em;
+}
+
+
+/*SEARCH FOR SENATOR SEARCH BOX STYLING*/
+
+
+/*.searchSenatorInfo{
+	}
+.searchSenatorInfo .input-group-item {
+  width: 16em;
+    position: relative;
+    float: left;
+  
+}
+
+.searchSenatorInfo .dropdown {
+    width: 15em;
+    margin: 0 auto;
+}*/
+
+.dropdown-menu {
+    height: 20em;
+    overflow-y: scroll;
+}
+
+.right {
+    float: right;
+}
+
+.top {
+    margin-top: -30px;
+}
+
+#senatorsSearchList {
+    background: whitesmoke;
+    position: absolute;
+    left: 2em;
+    top: 2em;
+    width: 400px;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 0 white;
+    max-height: 450px;
+}
+
+ul {
+    margin: 0 auto;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    /*border: 1px solid rgba(0, 0, 0, 0.1);*/
+    padding: 5px 5px 0 5px;
+    border-left: none;
+    border-right: none;
+}
+
+
+/*li {
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.05);
+  background-image: 
+    linear-gradient(
+      90deg,
+      #FFD32E 10px,
+      #EEE 10px,
+      #EEE 11px,
+      transparent 11px);
+  padding: 10px 15px 10px 25px;
+  border: 1px solid #CCC;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  margin-bottom: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 3px;
+}*/
+
+#query {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 19px;
+    padding: 5px;
+    font-family: calibri light;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+#senatorsSearchList span {
+    display: block;
+    position: absolute;
+    background: #FFD32E;
+    bottom: -35px;
+    left: -1px;
+    width: 360px;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+#senatorsSearchList select {
+    width: 120px;
+    height: 34px;
+    margin-left: -8.5em;
+    /*margin-left: 230px;
+  margin-top: -45px;*/
+    border-radius: 0 3px 3px 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    position: absolute;
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.1);
+    z-index: 99;
+}
+
+#senatorsSearchList select:focus,
+#query:focus {
+    border: 1px solid #FFD32E;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.1);
+    outline: none;
+}
+
+.box {
+    position: relative;
+    z-index: 9999;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: 5px;
+    background-color: #abc;
+}
+
+.bigger {
+    width: 120%;
+    height: 120%;
+}
+
+@keyframes bounce {}
+
+.selected {
+    stroke: black;
+    stroke-width: 20;
+    stroke-linecap: round;
+}
+
+.summary-chart rect .republican {
+    fill: #D80206;
+    stroke: none;
+}
+
+.summary-chart rect .democrat {
+    fill: #3045C4;
+    stroke: none;
+}
+
+.summary-chart rect .independent {
+    fill: #c4b130;
+    stroke: none;
+}
+
+.summary-chart {
+    padding-top: 15px;
+}
+
+
+/*D3 BAR CHART*/
+
+#chart text {
+    fill: black;
+    font: 10px sans-serif;
+    text-anchor: end;
+}
+
+.axis text {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.barchart{
+	margin-top:-25em;
+	}
